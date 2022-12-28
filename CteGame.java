@@ -45,7 +45,7 @@ class MenuPanel extends JPanel{
 	
 		public void mouseClicked(MouseEvent me){
 			if(me.getSource()== play){
-				CteGame.cl.show(CteGame.cards, "GamePanel"); //show gamePanel when play is clicked
+				CteGame.cl.show(CteGame.cards, "LevelPanel"); //show gamePanel when play is clicked
 			}
 			if(me.getSource()== help){
 				CteGame.cl.show(CteGame.cards, "HelpPanel"); //show helpPanel when help is clicked
@@ -66,10 +66,74 @@ class MenuPanel extends JPanel{
 	}//end paintComponent
 }//end GamePanel
 
+//////////////////////////////  Level Panel  ////////////////////////////////
+class levelPanel extends JPanel{
+	JButton easy = new JButton("");
+	JButton medium = new JButton("");
+	JButton hard = new JButton("");
+
+	Image levelBackground = new ImageIcon("images\\menuBackground2.png").getImage();
+
+	ImageIcon easybutton = new ImageIcon("buttons\\easy.png"); 
+	ImageIcon mediumbutton = new ImageIcon("buttons\\medium.png");
+	ImageIcon hardbutton = new ImageIcon("buttons\\hard.png");
+
+	JPanel center = new JPanel();
+
+	levelPanel(){
+		
+		center.setLayout(new BoxLayout(center,BoxLayout.Y_AXIS)); //setting box layout 
+		add(center); //adding the panel to anothe JPanel
+		
+		/* setting icons on buttons */
+		easy.setIcon(easybutton); 
+		medium.setIcon(mediumbutton);
+		hard.setIcon(hardbutton);
+		
+		/* adding the buttons in the panel */
+		center.add(easy);
+		center.add(medium);
+		center.add(hard);
+				
+		/* adding mouseListeners on buttons */
+		easy.addMouseListener(new LevelClick());
+		medium.addMouseListener(new LevelClick());
+		hard.addMouseListener(new LevelClick());
+		
+	}//end constructor
+
+	class LevelClick extends MouseAdapter{
+
+		public void mouseClicked(MouseEvent me){
+			if(me.getSource()== easy){
+				CteGame.cl.show(CteGame.cards, "GamePanel"); //show gamePanel when play is clicked
+			}
+			if(me.getSource()== medium){
+				CteGame.cl.show(CteGame.cards, "HelpPanel"); //show helpPanel when help is clicked
+			}	
+			if(me.getSource()== hard){
+				System.exit(0);  //exit application when exit is clicked
+			}
+		}//end mouseClick
+		
+	}
+
+	public void paintComponent(Graphics g){
+		super.paintComponent(g); //calling the super class functions
+		Graphics2D g2d = (Graphics2D)g; //casting to graphcis2D
+		setFocusable(true);		 //setting the focus on the panel
+		
+		g2d.drawImage(levelBackground, 0,0, null); //draw level image
+		repaint();
+	}//end paintComponent
+
+	
+}
+
 ///////////////////////////////// Help Panel \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 class HelpPanel extends JPanel{
 
-	Image helpbkg = new ImageIcon("images\\helpbkg.png").getImage(); //help image background
+	Image helpbkg = new ImageIcon("images\\helpBackground.png").getImage(); //help image background
 	JButton back = new JButton("Back"); //back button
 	
 	HelpPanel(){
@@ -107,6 +171,7 @@ class GamePanel extends JPanel{
 	
 	JLabel time;
 	JLabel points;
+	
 	
 	int pointsCount = 0;
 	int timeleft = 59;
@@ -148,6 +213,8 @@ class GamePanel extends JPanel{
 				}
 			}//end keypressed
 		});	
+
+		
 	}//end constructor
 	
 	void fallEgg(){
@@ -190,6 +257,7 @@ class GamePanel extends JPanel{
 			gameOver = true;
 			yourScore.setForeground(Color.RED);
 			add(yourScore);
+			
 		}
 	}
 	
@@ -222,6 +290,7 @@ public class CteGame extends JFrame{
 	static MenuPanel mp = new MenuPanel();
 	static HelpPanel hp = new HelpPanel();
 	static GamePanel gp = new GamePanel();
+	static levelPanel lp = new levelPanel();
 	
 	static CardLayout cl = new CardLayout();
 	static JPanel cards = new JPanel(); // to contain the panels as cards
@@ -232,10 +301,11 @@ public class CteGame extends JFrame{
 		cards.add(mp, "MenuPanel");
 		cards.add(hp, "HelpPanel");
 		cards.add(gp, "GamePanel");
+		cards.add(lp,"LevelPanel");
 		cl.show(cards, "MenuPanel");
 		add(cards); //adding the panel with cardlayout in JFrame
 		
-		setTitle("Catch The Eggs Game");
+		setTitle("Catch The Bitcoin");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(1039, 700); //frame size
 		setResizable(false);
