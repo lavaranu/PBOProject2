@@ -26,8 +26,8 @@ public class GamePanel3 extends JPanel{
 	
 	boolean gameOver = false;
 
-	float basketSpeed = 0.5f;
-	float coinSpeed = 0.5f;
+	float basketSpeed = 3f;
+	
 	
 	GamePanel3(){
 		
@@ -75,7 +75,7 @@ public class GamePanel3 extends JPanel{
 			x_coin = rand.nextInt(1000);
 		}
 		else
-			y_coin++;
+			y_coin += 5;
 	}
 	
 	void updateTime(){

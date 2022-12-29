@@ -23,13 +23,13 @@ public class GamePanel extends JPanel {
 	
 	
 	int pointsCount = 0;
-	int timeleft = 59;
+	int timeleft = 40;
 	int counter  = 0;
 	
 	boolean gameOver = false;
 
 	float basketSpeed = 2f;
-	int coinSpeed = 10;
+
 	
 	GamePanel(){
 		
@@ -74,11 +74,11 @@ public class GamePanel extends JPanel {
 	
 	void fallCoin(){
 		if(y_coin >=650){
-			y_coin = 0 * coinSpeed;
+			y_coin = 0;
 			x_coin = rand.nextInt(1000);
 		}
 		else
-			y_coin +=5;
+			y_coin ++;
 	}
 	
 	void updateTime(){
@@ -106,22 +106,18 @@ public class GamePanel extends JPanel {
 	void checkGameOver(){
 		if(timeleft <= 0)
 		{
-            JButton back = new JButton("Back");
+			
+			//Ctb.cl.show(Ctb.cards, "GameOverPanel");
 			JLabel yourScore = new JLabel("Your SCORE :" + pointsCount);
 			tempbkg = gameOverbkg;
 			yourScore.setBounds(400, 400, 200, 100);
 			gameOver = true;
 			yourScore.setForeground(Color.RED);
 			add(yourScore);
-            add(back);
-
-            back.addMouseListener(new MouseAdapter(){
-                public void mouseClicked(MouseEvent me){
-                    Ctb.cl.show(Ctb.cards, "MenuPanel"); // show menuPanel when back button is clicked
-                }	
-              });
-            back.setVisible(true);
 			
+    
+
+            
 		}
 	}
 	

@@ -21,13 +21,12 @@ public class GamePanel2 extends JPanel {
 	
 	
 	int pointsCount = 0;
-	int timeleft = 59;
+	int timeleft = 45;
 	int counter  = 0;
 	
 	boolean gameOver = false;
 
-	float basketSpeed = 1f;
-	float coinSpeed = 0.5f;
+	float basketSpeed = 2f;
 	
 	GamePanel2(){
 		
@@ -75,7 +74,7 @@ public class GamePanel2 extends JPanel {
 			x_coin = rand.nextInt(1000);
 		}
 		else
-			y_coin++;
+			y_coin += 3;
 	}
 	
 	void updateTime(){
