@@ -18,6 +18,8 @@ public class GamePanel extends JPanel {
 	
 	JLabel time;
 	JLabel points;
+
+    
 	
 	
 	int pointsCount = 0;
@@ -64,6 +66,8 @@ public class GamePanel extends JPanel {
 			}//end keypressed
 		});	
 
+       
+
 		
 	}//end constructor
 
@@ -74,7 +78,7 @@ public class GamePanel extends JPanel {
 			x_coin = rand.nextInt(1000);
 		}
 		else
-			y_coin++;
+			y_coin +=5;
 	}
 	
 	void updateTime(){
@@ -102,12 +106,21 @@ public class GamePanel extends JPanel {
 	void checkGameOver(){
 		if(timeleft <= 0)
 		{
+            JButton back = new JButton("Back");
 			JLabel yourScore = new JLabel("Your SCORE :" + pointsCount);
 			tempbkg = gameOverbkg;
 			yourScore.setBounds(400, 400, 200, 100);
 			gameOver = true;
 			yourScore.setForeground(Color.RED);
 			add(yourScore);
+            add(back);
+
+            back.addMouseListener(new MouseAdapter(){
+                public void mouseClicked(MouseEvent me){
+                    Ctb.cl.show(Ctb.cards, "MenuPanel"); // show menuPanel when back button is clicked
+                }	
+              });
+            back.setVisible(true);
 			
 		}
 	}

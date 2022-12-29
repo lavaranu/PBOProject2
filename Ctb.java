@@ -31,7 +31,7 @@ public class Ctb extends JFrame{
 		setTitle("Catch The Bitcoin");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(1039, 700); //frame size
-		setResizable(false);
+		setResizable(true);
 		setVisible(true);   //frame visibility
     }
 
