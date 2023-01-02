@@ -26,7 +26,7 @@ public class GamePanel2 extends JPanel {
 	
 	boolean gameOver = false;
 
-	float basketSpeed = 2f;
+	float basketSpeed = 2.5f;
 	
 	GamePanel2(){
 		

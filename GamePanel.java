@@ -18,12 +18,14 @@ public class GamePanel extends JPanel {
 	
 	JLabel time;
 	JLabel points;
+	JLabel health;
 
     
 	
 	
 	int pointsCount = 0;
 	int timeleft = 40;
+	int healthPlayer = 3;
 	int counter  = 0;
 	
 	boolean gameOver = false;
