@@ -12,7 +12,7 @@ import com.mysql.cj.xdevapi.Statement;
 import java.util.*;
 import java.awt.*;
 import java.sql.*;
-import java.sql.Statement;
+
 
 public class LeaderboardPanel extends JPanel {
     
