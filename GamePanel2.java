@@ -18,10 +18,12 @@ public class GamePanel2 extends JPanel {
 	
 	JLabel time;
 	JLabel points;
+	JLabel health;
 	
 	
 	int pointsCount = 0;
 	int timeleft = 45;
+	int healthplayer = 3;
 	int counter  = 0;
 	
 	boolean gameOver = false;
@@ -38,8 +40,10 @@ public class GamePanel2 extends JPanel {
 		x_coin = (int)rand.nextInt(1000);
 		y_coin = 0;
 		
-	    time = new JLabel("Time: 59");
+	    time = new JLabel("Time: " +timeleft);
 		time.setBounds(20, 10, 50, 20); //setting the time label on screen
+
+		health = new JLabel("Health : " +healthplayer);
 	    
 	    
 	    points = new JLabel("Points: 0");
@@ -48,6 +52,7 @@ public class GamePanel2 extends JPanel {
 		/*adding both components in jpanel*/
 		add(time);
 		add(points);
+		add(health);
 		
 		addKeyListener(new KeyAdapter(){
 			public void keyPressed(KeyEvent ke){
@@ -72,9 +77,13 @@ public class GamePanel2 extends JPanel {
 		if(y_coin >=650){
 			y_coin = 0;
 			x_coin = rand.nextInt(1000);
+			healthplayer --;
 		}
-		else
+		else{
 			y_coin += 3;
+		}
+		health.setText("Health : " +healthplayer);
+			
 	}
 	
 	void updateTime(){
@@ -100,7 +109,7 @@ public class GamePanel2 extends JPanel {
 	}//end collision detection
 	
 	void checkGameOver(){
-		if(timeleft <= 0)
+		if(timeleft <= 0 || healthplayer <=0)
 		{
 			JLabel yourScore = new JLabel("Your SCORE :" + pointsCount);
 			tempbkg = gameOverbkg;

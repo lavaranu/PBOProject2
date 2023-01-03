@@ -42,8 +42,11 @@ public class GamePanel extends JPanel {
 		x_basket = 350; y_basket = 515;
 		x_coin = (int)rand.nextInt(1000);
 		y_coin = 0;
+
+		health = new JLabel("Health: " +healthPlayer);
+		health.setBounds(200, 10, 100, 20);
 		
-	    time = new JLabel("Time: 59");
+	    time = new JLabel("Time: " +timeleft);
 		time.setBounds(20, 10, 50, 20); //setting the time label on screen
 	    
 	    
@@ -53,6 +56,7 @@ public class GamePanel extends JPanel {
 		/*adding both components in jpanel*/
 		add(time);
 		add(points);
+		add(health);
 		
 		addKeyListener(new KeyAdapter(){
 			public void keyPressed(KeyEvent ke){
@@ -78,9 +82,12 @@ public class GamePanel extends JPanel {
 		if(y_coin >=650){
 			y_coin = 0;
 			x_coin = rand.nextInt(1000);
+			healthPlayer --;
 		}
-		else
+		else{
 			y_coin ++;
+		}
+		health.setText("Health :" +healthPlayer);
 	}
 	
 	void updateTime(){
@@ -106,7 +113,7 @@ public class GamePanel extends JPanel {
 	}//end collision detection
 	
 	void checkGameOver(){
-		if(timeleft <= 0)
+		if(timeleft <= 0 || healthPlayer <=0)
 		{
 			
 			//Ctb.cl.show(Ctb.cards, "GameOverPanel");
@@ -117,7 +124,7 @@ public class GamePanel extends JPanel {
 			yourScore.setForeground(Color.RED);
 			add(yourScore);
 			
-			
+
     
 
             

@@ -47,12 +47,18 @@ public class LevelPanel extends JPanel  {
 
 		public void mouseClicked(MouseEvent me){
 			if(me.getSource()== easy){
+				GamePanel gp = new GamePanel();
+				Ctb.cards.add(gp, "GamePanel");
 				Ctb.cl.show(Ctb.cards, "GamePanel"); //show gamePanel when play is clicked
 			}
 			if(me.getSource()== medium){
+				GamePanel2 gp2 = new GamePanel2();
+				Ctb.cards.add(gp2, "GamePanel2");
 				Ctb.cl.show(Ctb.cards, "GamePanel2"); 
 			}	
 			if(me.getSource()== hard){
+				GamePanel3 gp3 = new GamePanel3();
+				Ctb.cards.add(gp3, "GamePanel3");
 				Ctb.cl.show(Ctb.cards, "GamePanel3");
 			}
 		}//end mouseClick
