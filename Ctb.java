@@ -11,6 +11,7 @@ public class Ctb extends JFrame implements ActionListener{
     JMenu menu;
     JMenuItem newGameMenuItem;
     JMenuItem exitGamMenuItem;
+    JMenuItem leadernoardMenuItem;
     
     static MenuPanel mp = new MenuPanel();
     static GamePanel gp = new GamePanel();
@@ -18,6 +19,7 @@ public class Ctb extends JFrame implements ActionListener{
     static GamePanel3 gp3 = new GamePanel3();
     static HelpPanel hp = new HelpPanel();
     static LevelPanel lp = new LevelPanel();
+    static LeaderboardPanel ldp = new LeaderboardPanel();
     
 
     static CardLayout cl = new CardLayout();
@@ -31,6 +33,7 @@ public class Ctb extends JFrame implements ActionListener{
         cards.add(gp3, "GamePanel3");
         cards.add(hp,"HelpPanel");
         cards.add(lp,"LevelPanel");
+        cards.add(ldp,"LeaderboardPanel");
 		cl.show(cards, "MenuPanel");
 		add(cards); //adding the panel with cardlayout in JFrame
 
@@ -38,9 +41,12 @@ public class Ctb extends JFrame implements ActionListener{
         menu = new JMenu("Menu");
         newGameMenuItem = new JMenuItem("New Game");
         exitGamMenuItem = new JMenuItem("Exit game");
+        leadernoardMenuItem = new JMenuItem("Leaderboard");
 
         newGameMenuItem.addActionListener(this);
         exitGamMenuItem.addActionListener(this);
+        leadernoardMenuItem.addActionListener(this);
+
 
 		
 		setTitle("Catch The Bitcoin");
@@ -48,6 +54,7 @@ public class Ctb extends JFrame implements ActionListener{
 		setSize(1039, 700); //frame size
 		setResizable(false);
 
+        menu.add(leadernoardMenuItem);
         menu.add(newGameMenuItem);
         menu.add(exitGamMenuItem);
         menuBar.add(menu);
@@ -67,6 +74,8 @@ public class Ctb extends JFrame implements ActionListener{
             Ctb.cl.show(cards, "MenuPanel");
         } else if(e.getSource()==exitGamMenuItem){
             System.exit(0);
+        } else if(e.getSource() == leadernoardMenuItem){
+            Ctb.cl.show(cards, "LeaderboardPanel");
         }
         
     }
