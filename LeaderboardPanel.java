@@ -49,7 +49,7 @@ public class LeaderboardPanel extends JPanel {
 
        try {
         Statement st = (Statement) Koneksi.getConnection().createStatement();
-        ResultSet rs = st.executeQuery("SELECT * FROM leaderboard ORDER BY Score DESC");
+        ResultSet rs = ((java.sql.Statement) st).executeQuery("SELECT * FROM leaderboard ORDER BY Score DESC");
 
         while(rs.next()){
             tbl.addRow(new Object[]{

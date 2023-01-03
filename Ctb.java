@@ -11,7 +11,7 @@ public class Ctb extends JFrame implements ActionListener{
     JMenu menu;
     JMenuItem newGameMenuItem;
     JMenuItem exitGamMenuItem;
-    JMenuItem leadernoardMenuItem;
+    JMenuItem leaderboardMenuItem;
     
     static MenuPanel mp = new MenuPanel();
     static GamePanel gp = new GamePanel();
@@ -41,11 +41,11 @@ public class Ctb extends JFrame implements ActionListener{
         menu = new JMenu("Menu");
         newGameMenuItem = new JMenuItem("New Game");
         exitGamMenuItem = new JMenuItem("Exit game");
-        leadernoardMenuItem = new JMenuItem("Leaderboard");
+        leaderboardMenuItem = new JMenuItem("Leaderboard");
 
         newGameMenuItem.addActionListener(this);
         exitGamMenuItem.addActionListener(this);
-        leadernoardMenuItem.addActionListener(this);
+        leaderboardMenuItem.addActionListener(this);
 
 
 		
@@ -54,7 +54,7 @@ public class Ctb extends JFrame implements ActionListener{
 		setSize(1039, 700); //frame size
 		setResizable(false);
 
-        menu.add(leadernoardMenuItem);
+        menu.add(leaderboardMenuItem);
         menu.add(newGameMenuItem);
         menu.add(exitGamMenuItem);
         menuBar.add(menu);
@@ -74,7 +74,7 @@ public class Ctb extends JFrame implements ActionListener{
             Ctb.cl.show(cards, "MenuPanel");
         } else if(e.getSource()==exitGamMenuItem){
             System.exit(0);
-        } else if(e.getSource() == leadernoardMenuItem){
+        } else if(e.getSource() == leaderboardMenuItem){
             Ctb.cl.show(cards, "LeaderboardPanel");
         }
         

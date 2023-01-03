@@ -117,6 +117,7 @@ public class GamePanel extends JPanel {
 			yourScore.setForeground(Color.RED);
 			add(yourScore);
 			
+			
     
 
             
