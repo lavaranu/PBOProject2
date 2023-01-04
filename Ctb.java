@@ -80,5 +80,4 @@ public class Ctb extends JFrame implements ActionListener{
         
     }
 
-
 }
