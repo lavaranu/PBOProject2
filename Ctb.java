@@ -19,7 +19,7 @@ public class Ctb extends JFrame implements ActionListener{
     static GamePanel3 gp3 = new GamePanel3();
     static HelpPanel hp = new HelpPanel();
     static LevelPanel lp = new LevelPanel();
-    static LeaderboardPanel ldp = new LeaderboardPanel();
+    static Leaderboard ld = new Leaderboard();
     
 
     static CardLayout cl = new CardLayout();
@@ -33,7 +33,7 @@ public class Ctb extends JFrame implements ActionListener{
         cards.add(gp3, "GamePanel3");
         cards.add(hp,"HelpPanel");
         cards.add(lp,"LevelPanel");
-        cards.add(ldp,"LeaderboardPanel");
+        cards.add(ld, "Leaderboard");
 		cl.show(cards, "MenuPanel");
 		add(cards); //adding the panel with cardlayout in JFrame
 
@@ -51,7 +51,8 @@ public class Ctb extends JFrame implements ActionListener{
 		
 		setTitle("Catch The Bitcoin");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setSize(1039, 700); //frame size
+		//setSize(1039, 700); //frame size
+        setBounds(150, 10, 1039, 700);
 		setResizable(false);
 
         menu.add(leaderboardMenuItem);

@@ -8,6 +8,7 @@ public class MenuPanel extends JPanel {
     JButton play = new JButton("");
 	JButton help = new JButton("");
 	JButton exit = new JButton("");
+	JButton ld = new JButton("");
 	
 	Image menubkg = new ImageIcon("images\\homePage.png").getImage();  //menu background
 	
@@ -15,6 +16,7 @@ public class MenuPanel extends JPanel {
 	ImageIcon playbtn = new ImageIcon("buttons\\playnew.png"); 
 	ImageIcon helpbtn = new ImageIcon("buttons\\helpnew.png");
 	ImageIcon exitbtn = new ImageIcon("buttons\\exitnew.png");
+	ImageIcon ldbtn = new ImageIcon("buttons\\leaaderboard.png");
 
 	JPanel center = new JPanel(); //adding another jpanel in a panel for boxLayout
 
@@ -33,15 +35,21 @@ public class MenuPanel extends JPanel {
 		this.add(help);
 		help.setBounds(400, 270, 170, 50);
 
+		
+		ld.setIcon(ldbtn);
+		this.add(ld);
+		ld.setBounds(350, 340, 270, 50);
+
 		exit.setIcon(exitbtn);
 		this.add(exit);
-		exit.setBounds(400, 340, 170, 50);
+		exit.setBounds(400, 410, 170, 50);
 		
 				
 		/* adding mouseListeners on buttons */
 		play.addMouseListener(new Click());
 		help.addMouseListener(new Click());
 		exit.addMouseListener(new Click());
+		ld.addMouseListener(new Click());
 		
 	}//end constructor
 	
@@ -53,7 +61,10 @@ public class MenuPanel extends JPanel {
 			}
 			if(me.getSource()== help){
 				Ctb.cl.show(Ctb.cards, "HelpPanel"); //show helpPanel when help is clicked
-			}	
+			}
+			if(me.getSource()== ld){
+				Ctb.cl.show(Ctb.cards, "Leaderboard"); //show helpPanel when help is clicked
+			}		
 			if(me.getSource()== exit){
 				System.exit(0);  //exit application when exit is clicked
 			}

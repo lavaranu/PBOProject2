@@ -24,7 +24,7 @@ public class GamePanel extends JPanel {
 	
 	
 	int pointsCount = 0;
-	int timeleft = 40;
+	int timeleft = 100;
 	int healthPlayer = 3;
 	int counter  = 0;
 	
@@ -116,13 +116,7 @@ public class GamePanel extends JPanel {
 		if(timeleft <= 0 || healthPlayer <=0)
 		{
 			
-			//Ctb.cl.show(Ctb.cards, "GameOverPanel");
-			JLabel yourScore = new JLabel("Your SCORE :" + pointsCount);
-			tempbkg = gameOverbkg;
-			yourScore.setBounds(400, 400, 200, 100);
 			gameOver = true;
-			yourScore.setForeground(Color.RED);
-			add(yourScore);
 			
 
     
@@ -148,9 +142,33 @@ public class GamePanel extends JPanel {
 		
 			g2d.drawImage(coin, x_coin, y_coin,null); //drawing egg at new position
 			g2d.drawImage(basket, x_basket, y_basket, null); //drawing basket
+			repaint();	
+		} else{
+			String nama = JOptionPane.showInputDialog("Masukkan nama kamu");
+			JLabel yourName = new JLabel("Yourname : " +nama);
+			yourName.setBounds(400,600, 200, 100);
+			JLabel yourScore = new JLabel("YOUR SCORE :" + pointsCount);
+			yourScore.setFont(new Font("SansSerif", Font.BOLD, 35));
+			yourScore.setBounds(350, 300, 500, 100);
+			gameOver = true;
+			yourScore.setForeground(Color.BLACK);
+			g2d.drawImage(gameOverbkg, 0, 0, null);
+			Leaderboard ld = new Leaderboard();
+			//tempbkg = gameOverbkg;
+			ld.save(nama, pointsCount);
+			ArrayList<Player> allPlayer = ld.getAll();
+			for(Player p : allPlayer){
+				JLabel name = new JLabel(" " +p.getNama());
+				name.setBounds(400, 90, 200, 100);
+				JLabel score = new JLabel(" " +p.getScore());
+				score.setBounds(400, 100, 200, 100);
+			}
+
+			add(yourScore);
+			add(yourName);
 		}
 		
-		repaint();	
+		
 	}//end paintComponent
 
 }

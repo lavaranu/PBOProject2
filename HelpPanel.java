@@ -7,14 +7,20 @@ import java.util.*;
 
 public class HelpPanel extends JPanel {
     
-    Image helpbkg = new ImageIcon("images\\helpBackground.png").getImage(); //help image background
-	JButton back = new JButton("Back"); //back button
+    Image helpbkg = new ImageIcon("images\\help.png").getImage(); //help image background
+	JButton back = new JButton(""); //back button
+
+	ImageIcon backButton = new ImageIcon("buttons\\back.png");
 
 	
 	
 	HelpPanel(){
 		setFocusable(true); //setting the focus
-		add(back);			//adding back button in the panel
+		setLayout(null);
+		
+		back.setIcon(backButton);
+		this.add(back);
+		back.setBounds(100, 500, 170, 50);
 		
 		back.addMouseListener(new MouseAdapter(){
 			public void mouseClicked(MouseEvent me){
