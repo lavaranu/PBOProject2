@@ -13,9 +13,9 @@ public class LevelPanel extends JPanel  {
 
 	Image levelBackground = new ImageIcon("images\\selectLevel.png").getImage();
 
-	ImageIcon easybutton = new ImageIcon("buttons\\easy.png"); 
-	ImageIcon mediumbutton = new ImageIcon("buttons\\medium.png");
-	ImageIcon hardbutton = new ImageIcon("buttons\\hard.png");
+	ImageIcon easybutton = new ImageIcon("buttons\\easynew.png"); 
+	ImageIcon mediumbutton = new ImageIcon("buttons\\mediumnew.png");
+	ImageIcon hardbutton = new ImageIcon("buttons\\hardnew.png");
 
 	JPanel center = new JPanel();
 
@@ -32,11 +32,11 @@ public class LevelPanel extends JPanel  {
 
 		medium.setIcon(mediumbutton);
 		this.add(medium);
-		medium.setBounds(400, 150, 200, 50);
+		medium.setBounds(400, 170, 200, 50);
 		
 		hard.setIcon(hardbutton);
 		this.add(hard);
-		hard.setBounds(400, 200, 200, 50);
+		hard.setBounds(400, 240, 200, 50);
 		
 				
 		/* adding mouseListeners on buttons */
