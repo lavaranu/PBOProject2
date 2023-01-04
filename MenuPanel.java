@@ -21,21 +21,22 @@ public class MenuPanel extends JPanel {
 	
 	
 	MenuPanel(){
-		
-		center.setLayout(new BoxLayout(center,BoxLayout.Y_AXIS)); //setting box layout 
-		add(center); //adding the panel to anothe JPanel
 
-		
-		
-		/* setting icons on buttons */
+		setFocusable(true);
+
+		setLayout(null);
 		play.setIcon(playbtn); 
+		this.add(play);
+		play.setBounds(400, 200, 200, 50);
+
 		help.setIcon(helpbtn);
+		this.add(help);
+		help.setBounds(400, 250, 200, 50);
+
 		exit.setIcon(exitbtn);
+		this.add(exit);
+		exit.setBounds(400, 300, 200, 50);
 		
-		/* adding the buttons in the panel */
-		center.add(play);
-		center.add(help);
-		center.add(exit);
 				
 		/* adding mouseListeners on buttons */
 		play.addMouseListener(new Click());

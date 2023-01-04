@@ -22,19 +22,22 @@ public class LevelPanel extends JPanel  {
 
 	LevelPanel(){
 		
-		center.setLayout(new BoxLayout(center,BoxLayout.Y_AXIS)); //setting box layout 
-		add(center); //adding the panel to anothe JPanel
-		
-		
-		/* setting icons on buttons */
+		// center.setLayout(new BoxLayout(center,BoxLayout.Y_AXIS)); //setting box layout 
+		// add(center); //adding the panel to anothe JPanel
+
+		setLayout(null);
 		easy.setIcon(easybutton); 
+		this.add(easy);
+		easy.setBounds(400, 100, 200, 50);
+
 		medium.setIcon(mediumbutton);
-		hard.setIcon(hardbutton);
+		this.add(medium);
+		medium.setBounds(400, 150, 200, 50);
 		
-		/* adding the buttons in the panel */
-		center.add(easy);
-		center.add(medium);
-		center.add(hard);
+		hard.setIcon(hardbutton);
+		this.add(hard);
+		hard.setBounds(400, 200, 200, 50);
+		
 				
 		/* adding mouseListeners on buttons */
 		easy.addMouseListener(new LevelClick());
