@@ -16,7 +16,7 @@ import java.sql.*;
 
 public class LeaderboardPanel extends JPanel {
     
-    Image bg = new ImageIcon("images\\gameBackground2.png").getImage();
+    Image bg = new ImageIcon("images\\leaderboard.png").getImage();
     JButton back = new JButton("Back");
     JTable table;
     

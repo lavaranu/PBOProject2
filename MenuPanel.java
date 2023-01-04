@@ -9,7 +9,7 @@ public class MenuPanel extends JPanel {
 	JButton help = new JButton("");
 	JButton exit = new JButton("");
 	
-	Image menubkg = new ImageIcon("images\\menuBackground2.png").getImage();  //menu background
+	Image menubkg = new ImageIcon("images\\homePage.png").getImage();  //menu background
 	
 	/* Setting icons on buttons */
 	ImageIcon playbtn = new ImageIcon("buttons\\play1.png"); 
