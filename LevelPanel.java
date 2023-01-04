@@ -11,7 +11,7 @@ public class LevelPanel extends JPanel  {
 	JButton medium = new JButton("");
 	JButton hard = new JButton("");
 
-	Image levelBackground = new ImageIcon("images\\menuBackground2.png").getImage();
+	Image levelBackground = new ImageIcon("images\\selectLevel.png").getImage();
 
 	ImageIcon easybutton = new ImageIcon("buttons\\easy.png"); 
 	ImageIcon mediumbutton = new ImageIcon("buttons\\medium.png");
