@@ -13,28 +13,31 @@ public class LevelPanel extends JPanel  {
 
 	Image levelBackground = new ImageIcon("images\\selectLevel.png").getImage();
 
-	ImageIcon easybutton = new ImageIcon("buttons\\easy.png"); 
-	ImageIcon mediumbutton = new ImageIcon("buttons\\medium.png");
-	ImageIcon hardbutton = new ImageIcon("buttons\\hard.png");
+	ImageIcon easybutton = new ImageIcon("buttons\\easynew.png"); 
+	ImageIcon mediumbutton = new ImageIcon("buttons\\mediumnew.png");
+	ImageIcon hardbutton = new ImageIcon("buttons\\hardnew.png");
 
 	JPanel center = new JPanel();
 
 
 	LevelPanel(){
 		
-		center.setLayout(new BoxLayout(center,BoxLayout.Y_AXIS)); //setting box layout 
-		add(center); //adding the panel to anothe JPanel
-		
-		
-		/* setting icons on buttons */
+		// center.setLayout(new BoxLayout(center,BoxLayout.Y_AXIS)); //setting box layout 
+		// add(center); //adding the panel to anothe JPanel
+
+		setLayout(null);
 		easy.setIcon(easybutton); 
+		this.add(easy);
+		easy.setBounds(400, 100, 200, 50);
+
 		medium.setIcon(mediumbutton);
-		hard.setIcon(hardbutton);
+		this.add(medium);
+		medium.setBounds(400, 170, 200, 50);
 		
-		/* adding the buttons in the panel */
-		center.add(easy);
-		center.add(medium);
-		center.add(hard);
+		hard.setIcon(hardbutton);
+		this.add(hard);
+		hard.setBounds(400, 240, 200, 50);
+		
 				
 		/* adding mouseListeners on buttons */
 		easy.addMouseListener(new LevelClick());

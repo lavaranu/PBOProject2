@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch Ctb",
+            "request": "launch",
+            "mainClass": "Ctb",
+            "projectName": "PBOProject2_a6ef0bbf"
+        },
+        {
+            "type": "java",
             "name": "Launch Current File",
             "request": "launch",
             "mainClass": "${file}"

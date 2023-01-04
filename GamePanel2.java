@@ -44,7 +44,6 @@ public class GamePanel2 extends JPanel {
 		time.setBounds(20, 10, 50, 20); //setting the time label on screen
 
 		health = new JLabel("Health : " +healthplayer);
-		
 	    
 	    
 	    points = new JLabel("Points: 0");
