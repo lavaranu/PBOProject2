@@ -29,9 +29,9 @@ public class GamePanel extends JPanel {
 	Audio audio = new Audio();
 	
 	int pointsCount = 0;
-	int timeleft = 100;
+	int timeleft = 1;
 	int healthPlayer = 3;
-	int counter  = 0;
+	int counter = 0;
 	
 	boolean gameOver = false;
 
@@ -52,7 +52,7 @@ public class GamePanel extends JPanel {
 		health.setBounds(200, 10, 100, 20);
 		
 	    time = new JLabel("Time: " +timeleft);
-		time.setBounds(20, 10, 50, 20); //setting the time label on screen
+		time.setBounds(20, 10, 100, 20); //setting the time label on screen
 	    
 	    
 	    points = new JLabel("Points: 0");
@@ -97,9 +97,9 @@ public class GamePanel extends JPanel {
 	
 	void updateTime(){
 		counter++;
-		if(counter == 100) //we count to 60 and then dec timeleft by 1 for slowing speed
+		if(counter == 100) //we count to 60 and then inc timeleft by 1 for slowing speed
 		{
-		   timeleft--;  //dec time left after 60 counts
+		   timeleft++;  //inc time left after 60 counts
 		   counter = 0; //reset counter
 		}
 		time.setText("Time:"+timeleft);
