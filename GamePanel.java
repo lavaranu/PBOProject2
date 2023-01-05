@@ -31,7 +31,7 @@ public class GamePanel extends JPanel {
 	int pointsCount = 0;
 	int timeleft = 100;
 	int healthPlayer = 3;
-	int counter  = 0;
+	int counter = 0;
 	
 	boolean gameOver = false;
 
@@ -52,7 +52,7 @@ public class GamePanel extends JPanel {
 		health.setBounds(200, 10, 100, 20);
 		
 	    time = new JLabel("Time: " +timeleft);
-		time.setBounds(20, 10, 50, 20); //setting the time label on screen
+		time.setBounds(20, 10, 100, 20); //setting the time label on screen
 	    
 	    
 	    points = new JLabel("Points: 0");

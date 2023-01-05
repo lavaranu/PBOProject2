@@ -10,6 +10,8 @@ import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import com.mysql.cj.xdevapi.Table;
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -36,6 +38,8 @@ public class Leaderboard extends JPanel {
 
     JButton back = new JButton(""); //back button
 
+    JTable table;
+
 	ImageIcon backButton = new ImageIcon("buttons\\back.png");
 
     Audio audio = new Audio();
@@ -55,15 +59,18 @@ public class Leaderboard extends JPanel {
         pass = "";
         this.setConnectionAndStatement();
 
-        model = new DefaultTableModel(coloumnNames, 0);
+        // model = new DefaultTableModel(coloumnNames, 0);
 
         
-        JTable table = new JTable(model);
-        JScrollPane scrollPane = new JScrollPane(table);
+        // JTable table = new JTable(model);
+        // JScrollPane scrollPane = new JScrollPane(table);
 
-        this.add(scrollPane);
-        scrollPane.setBounds(330, 190, 400, 400);
-        scrollPane.setVisible(true);
+        // this.add(scrollPane);
+        // scrollPane.setBounds(330, 190, 400, 400);
+        // scrollPane.setVisible(true);
+
+        // tampilTabel();
+        getAll();
 
         back.addMouseListener(new MouseAdapter(){
 			public void mouseClicked(MouseEvent me){
@@ -104,15 +111,35 @@ public class Leaderboard extends JPanel {
     public ArrayList<Player> getAll(){
         ArrayList<Player> allPlayer = new ArrayList<>();
 
-        try {
-            query = "SELECT * FROM leaderboard ORDER BY score DESC";
-            ResultSet rs = stmt.executeQuery(query);
+        model = new DefaultTableModel();
+        model.addColumn("Nama");
+        model.addColumn("Score");
+        
 
-            while (rs.next()) {
-                allPlayer.add(new Player(
-                    name =  rs.getString("Nama"),
-                    score = rs.getInt("Score")));
-                    model.addRow(new Object[] {name, score});
+
+        try {
+            ResultSet rs = stmt.executeQuery("SELECT * FROM leaderboard ORDER BY Score DESC LIMIT 10");
+
+            while (rs.next()) { 
+                model.addRow(new Object[] {
+                    allPlayer.add(new Player(
+                        rs.getString("nama"),
+                        rs.getInt("score"))),
+
+                        
+                    
+                });
+                
+                table = new JTable(model);
+                table.setModel(model);
+                JScrollPane scrollPane = new JScrollPane(table);
+                this.add(scrollPane);
+                scrollPane.setBounds(330, 190, 400, 400);
+                scrollPane.setVisible(true);
+            
+                
+            
+                
             }
         } catch (Exception e) {
            System.err.println("Error Getting Data: " +e.getMessage());
@@ -122,6 +149,27 @@ public class Leaderboard extends JPanel {
 
         
     }
+
+    // public void tampilTabel(){
+    //     DefaultTableModel tb = new DefaultTableModel();
+
+    //     tb.addColumn("Nama");
+    //     tb.addColumn("Score");
+        
+    //     try {
+    //         ResultSet res = stmt.executeQuery("SELECT * FROM leaderboard ORDER BY Score LIMIT 10");
+    //         while(res.next()){
+    //             tb.addRow(new Object[] {
+    //                 res.getString("Nama"),
+    //                 res.getInt("Score"),
+    //             });
+    //         }
+    //     } catch (Exception e) {
+    //         // TODO: handle exception
+    //         JOptionPane.showMessageDialog(null, "Data gagal ditampilkan" +e.getMessage());
+    //     }
+
+    // }
 
     public void paintComponent(Graphics g){
 		super.paintComponent(g);
