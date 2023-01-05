@@ -8,14 +8,9 @@ import java.util.*;
 public class HelpPanel extends JPanel {
     
     Image helpbkg = new ImageIcon("images\\help.png").getImage(); //help image background
-<<<<<<< HEAD
-	JButton back = new JButton(""); //back button
+	JButton back = new JButton("Back"); //back button
 
 	ImageIcon backButton = new ImageIcon("buttons\\back.png");
-=======
-	JButton back = new JButton("Back"); //back button
->>>>>>> 306a3eecd6ad5c5adc5aa3fbaf5e82f851d75dba
-
 	
 	
 	HelpPanel(){
