@@ -29,7 +29,7 @@ public class GamePanel extends JPanel {
 	Audio audio = new Audio();
 	
 	int pointsCount = 0;
-	int timeleft = 100;
+	int timeleft = 1;
 	int healthPlayer = 3;
 	int counter = 0;
 	
@@ -97,9 +97,9 @@ public class GamePanel extends JPanel {
 	
 	void updateTime(){
 		counter++;
-		if(counter == 100) //we count to 60 and then dec timeleft by 1 for slowing speed
+		if(counter == 100) //we count to 60 and then inc timeleft by 1 for slowing speed
 		{
-		   timeleft--;  //dec time left after 60 counts
+		   timeleft++;  //inc time left after 60 counts
 		   counter = 0; //reset counter
 		}
 		time.setText("Time:"+timeleft);
