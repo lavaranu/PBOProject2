@@ -9,7 +9,7 @@ public class GamePanel3 extends JPanel{
     Image gamebkg = new ImageIcon("images\\gamePlay.png").getImage();
 	Image basket  = new ImageIcon("images\\basket1.png").getImage();
 	Image coin     = new ImageIcon("images\\coin.png").getImage();
-	Image gameOverbkg= new ImageIcon("images\\gameover.png").getImage();
+	Image gameOverbkg= new ImageIcon("images\\gameOverBG.png").getImage();
 	Image tempbkg; //temporary background
 	
 	int x_basket,y_basket; //basket x and y  coordinates
