@@ -19,6 +19,12 @@ public class GamePanel2 extends JPanel {
 	JLabel time;
 	JLabel points;
 	JLabel health;
+
+	JButton back = new JButton(""); //back button
+
+	ImageIcon backButton = new ImageIcon("buttons\\mainmenu.png");
+
+	Audio audio = new Audio();
 	
 	
 	int pointsCount = 0;
@@ -106,6 +112,7 @@ public class GamePanel2 extends JPanel {
 			points.setText("Points:"+pointsCount); // set the count
 			y_coin = 0; // for next egg
 			x_coin = rand.nextInt(1000); // again randomizing x axis of egg
+			playSE(2);
 		}
 	}//end collision detection
 	
@@ -113,6 +120,7 @@ public class GamePanel2 extends JPanel {
 		if(timeleft <= 0 || healthplayer <=0)
 		{
 			gameOver = true;
+			playSE(3);
 			
 		}
 	}
@@ -144,6 +152,17 @@ public class GamePanel2 extends JPanel {
 			yourScore.setBounds(350, 300, 500, 100);
 			gameOver = true;
 			yourScore.setForeground(Color.BLACK);
+
+			back.setIcon(backButton);
+			back.setBounds(400, 500, 250, 50);
+
+			back.addMouseListener(new MouseAdapter(){
+				public void mouseClicked(MouseEvent me){
+					Ctb.cl.show(Ctb.cards, "MenuPanel"); // show menuPanel when back button is clicked
+					playSE(1);
+				}	
+			  });
+
 			g2d.drawImage(gameOverbkg, 0, 0, null);
 			Leaderboard ld = new Leaderboard();
 			//tempbkg = gameOverbkg;
@@ -156,12 +175,28 @@ public class GamePanel2 extends JPanel {
 				score.setBounds(400, 100, 200, 100);
 			}
 
+			add(back);
 			add(yourScore);
 			add(yourName);
 		}
 		
 			
 	}//end paintComponent
+
+	public void playMusic(int i){
+		audio.setFile(i);
+		audio.play();
+		audio.loop();
+	}
+
+	public void stopMusic(){
+		audio.stop();
+	}
+
+	public void playSE(int i){
+		audio.setFile(i);
+		audio.play();
+	}
 
 }
 

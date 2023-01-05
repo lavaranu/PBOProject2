@@ -10,12 +10,16 @@ public class LevelPanel extends JPanel  {
     JButton easy = new JButton("");
 	JButton medium = new JButton("");
 	JButton hard = new JButton("");
+	JButton back = new JButton("");
 
 	Image levelBackground = new ImageIcon("images\\selectLevel.png").getImage();
 
 	ImageIcon easybutton = new ImageIcon("buttons\\easynew.png"); 
 	ImageIcon mediumbutton = new ImageIcon("buttons\\mediumnew.png");
 	ImageIcon hardbutton = new ImageIcon("buttons\\hardnew.png");
+	ImageIcon backbtn = new ImageIcon("buttons\\back.png");
+
+	Audio audio = new Audio();
 
 	JPanel center = new JPanel();
 
@@ -37,12 +41,17 @@ public class LevelPanel extends JPanel  {
 		hard.setIcon(hardbutton);
 		this.add(hard);
 		hard.setBounds(400, 240, 200, 50);
+
+		back.setIcon(backbtn);
+		this.add(back);
+		back.setBounds(100, 500, 170, 50);
 		
 				
 		/* adding mouseListeners on buttons */
 		easy.addMouseListener(new LevelClick());
 		medium.addMouseListener(new LevelClick());
 		hard.addMouseListener(new LevelClick());
+		back.addMouseListener(new LevelClick());
 		
 	}//end constructor
 
@@ -53,16 +62,23 @@ public class LevelPanel extends JPanel  {
 				GamePanel gp = new GamePanel();
 				Ctb.cards.add(gp, "GamePanel");
 				Ctb.cl.show(Ctb.cards, "GamePanel"); //show gamePanel when play is clicked
+				playSE(1);
 			}
 			if(me.getSource()== medium){
 				GamePanel2 gp2 = new GamePanel2();
 				Ctb.cards.add(gp2, "GamePanel2");
 				Ctb.cl.show(Ctb.cards, "GamePanel2"); 
+				playSE(1);
 			}	
 			if(me.getSource()== hard){
 				GamePanel3 gp3 = new GamePanel3();
 				Ctb.cards.add(gp3, "GamePanel3");
 				Ctb.cl.show(Ctb.cards, "GamePanel3");
+				playSE(1);
+			}
+			if(me.getSource() == back){
+				Ctb.cl.show(Ctb.cards, "MenuPanel");
+				playSE(1);
 			}
 		}//end mouseClick
 		
@@ -76,6 +92,21 @@ public class LevelPanel extends JPanel  {
 		g2d.drawImage(levelBackground, 0,0, null); //draw level image
 		repaint();
 	}//end paintComponent
+
+	public void playMusic(int i){
+		audio.setFile(i);
+		audio.play();
+		audio.loop();
+	}
+
+	public void stopMusic(){
+		audio.stop();
+	}
+
+	public void playSE(int i){
+		audio.setFile(i);
+		audio.play();
+	}
 
 }
 

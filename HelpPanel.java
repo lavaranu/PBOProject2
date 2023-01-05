@@ -8,9 +8,14 @@ import java.util.*;
 public class HelpPanel extends JPanel {
     
     Image helpbkg = new ImageIcon("images\\help.png").getImage(); //help image background
-	JButton back = new JButton("Back"); //back button
+
+	JButton back = new JButton(""); //back button
 
 	ImageIcon backButton = new ImageIcon("buttons\\back.png");
+
+	Audio audio = new Audio();
+
+
 	
 	
 	HelpPanel(){
@@ -20,10 +25,11 @@ public class HelpPanel extends JPanel {
 		back.setIcon(backButton);
 		this.add(back);
 		back.setBounds(100, 500, 170, 50);
-		
+	
 		back.addMouseListener(new MouseAdapter(){
 			public void mouseClicked(MouseEvent me){
 				Ctb.cl.show(Ctb.cards, "MenuPanel"); // show menuPanel when back button is clicked
+				playSE(1);
 			}	
 		  });
 	}//end constructor
@@ -34,6 +40,21 @@ public class HelpPanel extends JPanel {
 		g2d.drawImage(helpbkg, 0,0, null); // draw help background
 		repaint();
 	}//end paintComponent
+
+	public void playMusic(int i){
+		audio.setFile(i);
+		audio.play();
+		audio.loop();
+	}
+
+	public void stopMusic(){
+		audio.stop();
+	}
+
+	public void playSE(int i){
+		audio.setFile(i);
+		audio.play();
+	}
 
 }
 

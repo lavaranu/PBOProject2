@@ -37,6 +37,8 @@ public class Leaderboard extends JPanel {
     JButton back = new JButton(""); //back button
 
 	ImageIcon backButton = new ImageIcon("buttons\\back.png");
+
+    Audio audio = new Audio();
     
 
     public Leaderboard(){
@@ -66,6 +68,7 @@ public class Leaderboard extends JPanel {
         back.addMouseListener(new MouseAdapter(){
 			public void mouseClicked(MouseEvent me){
 				Ctb.cl.show(Ctb.cards, "MenuPanel"); // show menuPanel when back button is clicked
+                playSE(1);
 			}	
 		  });
     }
@@ -126,6 +129,21 @@ public class Leaderboard extends JPanel {
 		g2d.drawImage(ldBg, 0,0, null); // draw help background
 		repaint();
 	}//end paintComponent
+
+    public void playMusic(int i){
+		audio.setFile(i);
+		audio.play();
+		audio.loop();
+	}
+
+	public void stopMusic(){
+		audio.stop();
+	}
+
+	public void playSE(int i){
+		audio.setFile(i);
+		audio.play();
+	}
     
 
 }
