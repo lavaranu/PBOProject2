@@ -120,6 +120,13 @@ public class Leaderboard extends JPanel {
         try {
             ResultSet rs = stmt.executeQuery("SELECT * FROM leaderboard ORDER BY Score DESC LIMIT 10");
 
+            table = new JTable(model);
+            table.setModel(model);
+            JScrollPane scrollPane = new JScrollPane(table);
+            this.add(scrollPane);
+            scrollPane.setBounds(330, 190, 400, 400);
+            scrollPane.setVisible(true);
+
             while (rs.next()) { 
                 model.addRow(new Object[] {
                     allPlayer.add(new Player(
@@ -130,12 +137,7 @@ public class Leaderboard extends JPanel {
                     
                 });
                 
-                table = new JTable(model);
-                table.setModel(model);
-                JScrollPane scrollPane = new JScrollPane(table);
-                this.add(scrollPane);
-                scrollPane.setBounds(330, 190, 400, 400);
-                scrollPane.setVisible(true);
+               
             
                 
             
