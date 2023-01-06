@@ -1,4 +1,6 @@
 import java.awt.event.*;
+import java.nio.file.FileAlreadyExistsException;
+
 import javax.swing.*;
 import javax.swing.event.*;
 import java.util.*;
@@ -35,7 +37,7 @@ public class Ctb extends JFrame{
 		
 		setTitle("Catch The Bitcoin");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		//setSize(1039, 700); //frame size
+		//frame size
         setBounds(150, 10, 1039, 700);
 		setResizable(false);
 		setVisible(true);   //frame visibility
